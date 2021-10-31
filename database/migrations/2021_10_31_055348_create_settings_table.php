@@ -19,7 +19,7 @@ class CreateSettingsTable extends Migration
             $table->string("phone_number")->nullable()->default("+123456789");
             $table->string("web_email")->nullable()->default("web@test.com");
             $table->string("address")->nullable()->default("Cairo");
-            $table->text("about_us")->nullable()->default("About Us");
+            $table->text("about_us")->nullable();
             $table->timestamps();
         });
     }
