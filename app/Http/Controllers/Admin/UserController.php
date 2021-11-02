@@ -78,7 +78,25 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Get user
+        $user = User::find($id);
+
+        // Update data coming from user
+        $user->update([
+            "name"      => $request->name,
+            "email"     => $request->email,
+        ]);
+
+        // Check if request has password
+        if($request->has("password") && $request->password != null){
+            // Update password
+            $user->update([
+                "password"  => Hash::make($request->password),
+            ]);
+        }
+
+        // Redirect to home page for users
+        return redirect()->route("users.index");
     }
 
     /**
