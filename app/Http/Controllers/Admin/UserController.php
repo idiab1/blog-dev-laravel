@@ -84,4 +84,22 @@ class UserController extends Controller
     {
         //
     }
+
+    public function makeAdmin($id){
+        $user = User::find($id);
+
+        if($user->is_admin == 0){
+
+            $user->update([
+
+                "is_admin" => 1
+
+            ]);
+
+        }
+
+        return redirect()->back();
+    }
+
+
 }
