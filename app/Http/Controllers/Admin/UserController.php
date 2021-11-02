@@ -98,11 +98,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->back();
     }
 
     // Make admin
     public function makeAdmin($id){
+
         $user = User::find($id);
 
         if($user->is_admin == 0){
