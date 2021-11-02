@@ -30,7 +30,30 @@ class SettingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validate on all request
+        $this->validate($request, [
+            "web_name"      => ['nullable', 'string'],
+            "phone_number",
+            "web_email"     => ['nullable', 'string', 'email'],
+            "address"       => ['nullable', 'string'],
+            "about_us"      => ['nullable', 'text']
+        ]);
+
+        $setting = Setting::find($id);
+
+        $setting->update([
+            "web_name"      => $request->web_name,
+            "phone_number"  => $request->phone_number,
+            "web_email"     => $request->web_email,
+            "address"       => $request->address,
+            "about_us"      => $request->about_us
+        ]);
+
+
+
+
+
+        return redirect()->back();
     }
 
 }
