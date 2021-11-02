@@ -38,7 +38,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate all data coming users
+        $this->validate($request, [
+            "name" => ["required", "string"],
+            "email" => ["required", "string", "email", "unique:users"],
+            "password" => ["required", "password", "confirmed"],
+        ]);
+
+        User::create([
+            "name"      => $request->name,
+            "email"     => $request->email,
+            "password"  => Hash::make($request->password),
+            "is_admin"  => 0,
+        ]);
+
+        return redirect()->route("users.index");
+
     }
 
     /**
