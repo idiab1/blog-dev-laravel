@@ -50,7 +50,10 @@
                                     <label for="address">Address</label>
                                     <input class="form-control" type="text" id="address" name="address" value="{{$setting->address}}" placeholder="Enter address">
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="aboutUs">About Me</label>
+                                    <textarea class="form-control" name="about_us" id="aboutUs" placeholder="Enter About us">{{$setting->setting}}</textarea>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 
