@@ -36,5 +36,11 @@ Route::prefix("admin")->middleware("is_admin")->group(function(){
         "destroy"   => "user.destroy",
     ]);
 
+    // Make admin
+    Route::put("/users/{id}/makeAdmin", [UserController::class, "makeAdmin"])->name("make.admin");
+    Route::put("/users/{id}/removeAdmin", [UserController::class, "removeAdmin"])->name("remove.admin");
+
+    // Remove admin
+
 });
 
