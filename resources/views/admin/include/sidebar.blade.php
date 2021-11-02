@@ -72,12 +72,12 @@
                     </a>
                 </li>
 
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{route('users.index')}}" class="nav-link">
                         <i class="fas fa-users nav-icon"></i>
                         <p>Users</p>
                     </a>
-                </li> --}}
+                </li>
 
                 {{-- <li class="nav-item">
                     <a href="{{route('setting.edit', ['id' => $setting->id])}}" class="nav-link">
