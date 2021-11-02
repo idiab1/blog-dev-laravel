@@ -38,9 +38,21 @@ Route::prefix("admin")->middleware("is_admin")->group(function(){
 
     // Make admin
     Route::put("/users/{id}/makeAdmin", [UserController::class, "makeAdmin"])->name("make.admin");
+    // Remove admin
     Route::put("/users/{id}/removeAdmin", [UserController::class, "removeAdmin"])->name("remove.admin");
 
-    // Remove admin
+
+
+
+    // -> Route for setting
+    Route::resource('setting', SettingController::class)->only([
+        'edit', 'update',
+    ])->parameters([
+        'setting' => 'id'
+    ])->names([
+        'edit'      => 'setting.edit',
+        'update'    => 'setting.update',
+    ]);
 
 });
 
