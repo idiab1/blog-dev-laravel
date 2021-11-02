@@ -70,7 +70,20 @@
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>
-
+                                                @if ($user->is_admin == 1)
+                                                    <button class="btn btn-sm btn-outline-dark" type="submit">Admin</button>
+                                                    <form class="d-inline-block" action="{{route('remove.admin', ['id' => $user->id])}}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button class="btn btn-sm btn-link" type="submit">Remove admin</button>
+                                                    </form>
+                                                @else
+                                                    <form action="{{route('make.admin', ['id' => $user->id])}}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button class="btn btn-sm btn-outline-dark" type="submit">Make Admin</button>
+                                                    </form>
+                                                @endif
                                             </td>
                                             <td>
                                                 <a class="btn btn-success btn-sm btn-edit" href="{{route('user.edit', ['id' => $user->id])}}">
